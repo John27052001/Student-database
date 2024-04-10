@@ -1,0 +1,28 @@
+body{
+
+    background-color: cadetblue;
+
+}
+
+.loginDiv{
+
+    background-color: rgb(142, 192, 171);
+    border: 10px black solid;
+    width: 30vw;
+    height: 40vh;
+    position: absolute;
+    left: 35vw;
+    top: 30vh;
+}
+
+.mainDiv{
+
+    background-color: rgb(142, 192, 171);
+    border: 10px black solid;
+    width: 90vw;
+    height: 90vh;
+    position: absolute;
+    left: 6vw;
+    top: 4vh; 
+
+}
