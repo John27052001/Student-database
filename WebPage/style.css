@@ -6,10 +6,13 @@ body{
 
 .loginDiv{
 
+
+    padding-top: 20vh;
+    text-align: center;
     background-color: rgb(142, 192, 171);
     border: 10px black solid;
     width: 30vw;
-    height: 40vh;
+    height: 20vh;
     position: absolute;
     left: 35vw;
     top: 30vh;
@@ -17,12 +20,22 @@ body{
 
 .mainDiv{
 
+    padding-top: 1vh;
+    padding-left: 1vw;
+
     background-color: rgb(142, 192, 171);
     border: 10px black solid;
-    width: 90vw;
-    height: 90vh;
+    width: 89vw;
+    height: 89vh;
     position: absolute;
     left: 6vw;
     top: 4vh; 
+
+}
+
+.Header{
+
+    text-decoration: underline;
+    font-size: xx-large;
 
 }
