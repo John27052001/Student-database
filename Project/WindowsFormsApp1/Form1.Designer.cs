@@ -35,7 +35,11 @@
             this.LoginUsername = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.LoginPage = new System.Windows.Forms.GroupBox();
+            this.Dashboard = new System.Windows.Forms.GroupBox();
+            this.dahsbord = new System.Windows.Forms.Label();
+            this.WelcomeBlurb = new System.Windows.Forms.Label();
             this.LoginPage.SuspendLayout();
+            this.Dashboard.SuspendLayout();
             this.SuspendLayout();
             // 
             // LoginPassword
@@ -100,24 +104,56 @@
             this.LoginPage.Controls.Add(this.Label);
             this.LoginPage.Controls.Add(this.LoginUsername);
             this.LoginPage.Controls.Add(this.LoginButton);
-            this.LoginPage.Location = new System.Drawing.Point(282, 183);
+            this.LoginPage.Location = new System.Drawing.Point(12, 518);
             this.LoginPage.Name = "LoginPage";
             this.LoginPage.Size = new System.Drawing.Size(734, 505);
             this.LoginPage.TabIndex = 6;
             this.LoginPage.TabStop = false;
             this.LoginPage.Visible = false;
             // 
+            // Dashboard
+            // 
+            this.Dashboard.Controls.Add(this.WelcomeBlurb);
+            this.Dashboard.Controls.Add(this.dahsbord);
+            this.Dashboard.Location = new System.Drawing.Point(12, 12);
+            this.Dashboard.Name = "Dashboard";
+            this.Dashboard.Size = new System.Drawing.Size(734, 500);
+            this.Dashboard.TabIndex = 7;
+            this.Dashboard.TabStop = false;
+            // 
+            // dahsbord
+            // 
+            this.dahsbord.AutoSize = true;
+            this.dahsbord.Location = new System.Drawing.Point(6, 16);
+            this.dahsbord.Name = "dahsbord";
+            this.dahsbord.Size = new System.Drawing.Size(59, 13);
+            this.dahsbord.TabIndex = 0;
+            this.dahsbord.Text = "Dashboard";
+            // 
+            // WelcomeBlurb
+            // 
+            this.WelcomeBlurb.AutoSize = true;
+            this.WelcomeBlurb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WelcomeBlurb.Location = new System.Drawing.Point(18, 40);
+            this.WelcomeBlurb.Name = "WelcomeBlurb";
+            this.WelcomeBlurb.Size = new System.Drawing.Size(214, 80);
+            this.WelcomeBlurb.TabIndex = 1;
+            this.WelcomeBlurb.Text = "Welcome {FNAME} {LNAME}\r\nPhoneNumb: {PhoneNum}\r\nDOB: {DOB}\r\nGender: {Gender} \r\n";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(758, 529);
+            this.Controls.Add(this.Dashboard);
             this.Controls.Add(this.LoginPage);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.LoginPage.ResumeLayout(false);
             this.LoginPage.PerformLayout();
+            this.Dashboard.ResumeLayout(false);
+            this.Dashboard.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -131,6 +167,9 @@
         private System.Windows.Forms.TextBox LoginUsername;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox LoginPage;
+        private System.Windows.Forms.GroupBox Dashboard;
+        private System.Windows.Forms.Label dahsbord;
+        private System.Windows.Forms.Label WelcomeBlurb;
     }
 }
 

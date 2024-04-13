@@ -39,4 +39,4 @@ create table studentcourse (
     foreign key (studentid) references studentinfo(studentid),
     foreign key (courseid) references course(courseid));
     
-INSERT INTO `studentdb_test`.`studentinfo` (`password`, `fname`, `lname`, `phonenum`, `DOB`, `gender`) VALUES ('Green', 'Mario', 'Mario', '555-555-5555', '3023', 'Male');
+INSERT INTO `studentdb_test`.`studentinfo` (`studentid`,`password`, `fname`, `lname`, `phonenum`, `DOB`, `gender`) VALUES (0001,'Green', 'Mario', 'Mario', 555-555-5555, 3023, 'Male');
