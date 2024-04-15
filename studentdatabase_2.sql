@@ -43,8 +43,40 @@ create table studentcourse (
     foreign key (courseid) references course(courseid));
 
 # creating dummy data
+	# studtnes
 INSERT INTO `studentdb_test`.`studentinfo` (`password`, `fname`, `lname`, `phonenum`, `DOB`, `gender`) VALUES ('Green', 'Mario', 'Mario', '555-555-5555', '1/2/3023', 'Male');
 INSERT INTO `studentdb_test`.`studentinfo` (`password`, `fname`, `lname`, `phonenum`, `DOB`, `gender`) VALUES ('Blue', 'Toad', 'Blue', '555-555-5555', '5/12/100', 'Toad');
 INSERT INTO `studentdb_test`.`studentinfo` (`password`, `fname`, `lname`, `phonenum`, `DOB`, `gender`) VALUES ('Luigi', 'Luigi', 'Mario', '555-555-5555', '1/1/2023', 'Luigi');
 
+	# departments
+INSERT INTO `studentdb_test`.`department` (`deptid`, `deptname`) VALUES ('1', 'science');
+INSERT INTO `studentdb_test`.`department` (`deptid`, `deptname`) VALUES ('2', 'Math');
+INSERT INTO `studentdb_test`.`department` (`deptid`, `deptname`) VALUES ('3', 'Music');
+INSERT INTO `studentdb_test`.`department` (`deptid`, `deptname`) VALUES ('4', 'Compouter Science');
 
+	# teachers
+INSERT INTO `studentdb_test`.`instructor` (`name`, `email`, `phone`, `deptid`) VALUES ('red', 'a@gmail.com', '555', '1');
+INSERT INTO `studentdb_test`.`instructor` (`name`, `email`, `phone`, `deptid`) VALUES ('blue', 'b@gmail.com', '555', '2');
+INSERT INTO `studentdb_test`.`instructor` (`name`, `email`, `phone`, `deptid`) VALUES ('green', 'c@gmail.com', '555', '3');
+INSERT INTO `studentdb_test`.`instructor` (`name`, `email`, `phone`, `deptid`) VALUES ('purple', 'd@gmail.com', '555', '4');
+	
+	# courses
+INSERT INTO `studentdb_test`.`course` (`cname`, `instructor`, `deptid`) VALUES ('programing 1', '4', '4');
+INSERT INTO `studentdb_test`.`course` (`cname`, `instructor`, `deptid`) VALUES ('songs 2', '3', '3');
+INSERT INTO `studentdb_test`.`course` (`cname`, `instructor`, `deptid`) VALUES ('numbers', '2', '2');
+INSERT INTO `studentdb_test`.`course` (`cname`, `instructor`, `deptid`) VALUES ('gravity', '1', '1');
+INSERT INTO `studentdb_test`.`course` (`cname`, `instructor`, `deptid`) VALUES ('programing 2', '4', '4');
+INSERT INTO `studentdb_test`.`course` (`cname`, `instructor`, `deptid`) VALUES ('numbers 2', '3', '3');
+
+	# setting up course student stuff
+		# mario
+insert into studentcourse(`studentid`,`courseid`) VALUES ('1','1');
+insert into studentcourse (`studentid`,`courseid`) VALUES ('1','3');
+insert into studentcourse (`studentid`,`courseid`) VALUES ('1','4');
+		# toad
+insert into studentcourse (`studentid`,`courseid`) values ('2','1');
+insert into studentcourse (`studentid`,`courseid`) values ('2','6');
+		# luigi
+insert into studentcourse (`studentid`,`courseid`) values ('3','3');
+insert into studentcourse (`studentid`,`courseid`) values ('3','2');
+insert into studentcourse (`studentid`,`courseid`) values ('3','6');
