@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -27,6 +28,8 @@ namespace WindowsFormsApp1
             LoginPage.Location = new Point(12, 12);
 
             Dashboard.Visible = false;
+
+            ClassManagePage.Visible = false;
 
             Global.CurrentLoggedInUser = null;
 
@@ -92,7 +95,7 @@ namespace WindowsFormsApp1
                     // setting the current logged in thing
                     Global.CurrentLoggedInUser = username;
                     // hiding the login page
-                    LoginPage.Visible = false;
+
 
                     InitalizeMainPage();
 
@@ -118,6 +121,11 @@ namespace WindowsFormsApp1
         // setting up the Other pages
         private void InitalizeMainPage()
         {
+            // hiding the other pages
+            LoginPage.Visible = false;
+
+            // setting the location of the thing or someting
+            Dashboard.Location = new Point(12,12);
 
             // showing the dashboard
             Dashboard.Visible = true;
@@ -141,10 +149,135 @@ namespace WindowsFormsApp1
                 //var recevPass = reader[1].ToString();
 
 
-                WelcomeBlurb.Text = "Welcome " + reader[2] + " " + reader[3] + "\nPhoneNumb: " + reader[4].ToString() + "\nDOB: " + reader[4].ToString() + "\nGender: "+reader[6];
+                WelcomeBlurb.Text = "Welcome " + reader[2] + " " + reader[3] + "\nPhoneNumb: " + reader[4].ToString() + "\nDOB: " + reader[5].ToString() + "\nGender: "+reader[6];
+
+                reader.Close();
+
+            }
+
+
+            // binging the currently enrolled classes to the dashboard gridView
+
+
+
+            commStr = "SELECT  course.courseid as CourseId,course.cname as Course, instructor.name as Teacher ,department.deptname as Department\r\n\tfrom course\r\nleft outer join studentcourse\r\n\ton course.courseid = studentcourse.courseid\r\nleft outer join studentinfo\r\n\ton studentcourse.studentid = studentinfo.studentid\r\nleft outer join instructor\r\n\ton instructor.iid = course.instructor\r\nleft outer join department\r\n\ton department.deptid = course.deptid\r\nwhere studentcourse.studentid = "+ Global.CurrentLoggedInUser +";";
+
+            using (cmd = new MySqlCommand(commStr, con)) { 
+            
+            
+                cmd.CommandType = CommandType.Text;
+                using (MySqlDataAdapter sda = new MySqlDataAdapter(cmd)) {
+
+                    using (DataTable dt = new DataTable()) { 
+                    
+                        sda.Fill(dt);
+                        DashGridView.DataSource = dt;  
+
+                    }
+
+                }
+
+            
+            }
+
+            con.Close();
+
+        }
+
+        // switching to the management page
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            // hiding the other pages
+            LoginPage.Visible = false;
+            Dashboard.Visible = false;
+
+            // showing the manage class thing
+            ClassManagePage.Location = new Point(12,12);
+            ClassManagePage.Visible = true;
+
+            loadManageTables();
+
+        }
+
+        // Actually loading the data into the tables
+        private void loadManageTables() {
+
+
+            // opening the connection
+            // creating the connection
+            MySqlConnection con = new MySqlConnection(connectionString());
+
+            con.Open();
+            MySqlCommand cmd;
+
+            // loading the currently enrolled classes
+            var commStr = "SELECT  course.courseid as CourseId,course.cname as Course, instructor.name as Teacher ,department.deptname as Department\r\n\tfrom course\r\nleft outer join studentcourse\r\n\ton course.courseid = studentcourse.courseid\r\nleft outer join studentinfo\r\n\ton studentcourse.studentid = studentinfo.studentid\r\nleft outer join instructor\r\n\ton instructor.iid = course.instructor\r\nleft outer join department\r\n\ton department.deptid = course.deptid\r\nwhere studentcourse.studentid = " + Global.CurrentLoggedInUser + ";";
+
+            cmd = new MySqlCommand(commStr, con);
+
+            using (cmd = new MySqlCommand(commStr, con))
+            {
+
+
+                cmd.CommandType = CommandType.Text;
+                using (MySqlDataAdapter sda = new MySqlDataAdapter(cmd))
+                {
+
+                    using (DataTable dt = new DataTable())
+                    {
+
+                        sda.Fill(dt);
+                        CurrentlyEnrolledClassesGrid.DataSource = dt;
+
+                    }
+
+                }
 
 
             }
+
+
+            // loading the avalable classes
+
+            commStr = "SELECT  course.courseid as CourseId,course.cname as Course, instructor.name as Teacher ,department.deptname as Department\r\n\tfrom course\r\nleft outer join studentcourse\r\n\ton course.courseid = studentcourse.courseid\r\nleft outer join studentinfo\r\n\ton studentcourse.studentid = studentinfo.studentid\r\nleft outer join instructor\r\n\ton instructor.iid = course.instructor\r\nleft outer join department\r\n\ton department.deptid = course.deptid\r\nwhere studentcourse.studentid != " + Global.CurrentLoggedInUser + ";";
+
+            cmd = new MySqlCommand(commStr, con);
+
+            using (cmd = new MySqlCommand(commStr, con))
+            {
+
+
+                cmd.CommandType = CommandType.Text;
+                using (MySqlDataAdapter sda = new MySqlDataAdapter(cmd))
+                {
+
+                    using (DataTable dt = new DataTable())
+                    {
+
+                        sda.Fill(dt);
+                        AvalableClassesGrid.DataSource = dt;
+
+                    }
+
+                }
+
+
+            }
+
+            con.Close();
+
+
+        }
+
+
+
+
+        // Goes back to dashboard Screen
+        private void ToDashboard_Click(object sender, EventArgs e)
+        {
+
+            InitalizeMainPage();
 
         }
     }
