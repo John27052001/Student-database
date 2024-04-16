@@ -211,59 +211,87 @@ namespace WindowsFormsApp1
             con.Open();
             MySqlCommand cmd;
 
-            // loading the currently enrolled classes
-            var commStr = "SELECT  course.courseid as CourseId,course.cname as Course, instructor.name as Teacher ,department.deptname as Department\r\n\tfrom course\r\nleft outer join studentcourse\r\n\ton course.courseid = studentcourse.courseid\r\nleft outer join studentinfo\r\n\ton studentcourse.studentid = studentinfo.studentid\r\nleft outer join instructor\r\n\ton instructor.iid = course.instructor\r\nleft outer join department\r\n\ton department.deptid = course.deptid\r\nwhere studentcourse.studentid = " + Global.CurrentLoggedInUser + ";";
+            MySqlTransaction mySqlTransaction = con.BeginTransaction();
+            // creating view that holds the currently enrolled classes
 
-            cmd = new MySqlCommand(commStr, con);
-
-            using (cmd = new MySqlCommand(commStr, con))
+            try
             {
 
-
-                cmd.CommandType = CommandType.Text;
-                using (MySqlDataAdapter sda = new MySqlDataAdapter(cmd))
+                using (cmd = new MySqlCommand("create or replace view `temp` as \r\nselect  course.courseid as CourseId,course.cname as Course, instructor.name as Teacher ,department.deptname as Department\r\n\tfrom course\r\nleft outer join studentcourse\r\n\ton course.courseid = studentcourse.courseid\r\nleft outer join studentinfo\r\n\ton studentcourse.studentid = studentinfo.studentid\r\nleft outer join instructor\r\n\ton instructor.iid = course.instructor\r\nleft outer join department\r\n\ton department.deptid = course.deptid\r\nwhere studentcourse.studentid = " + Global.CurrentLoggedInUser + ";", con))
                 {
 
-                    using (DataTable dt = new DataTable())
-                    {
-
-                        sda.Fill(dt);
-                        CurrentlyEnrolledClassesGrid.DataSource = dt;
-
-                    }
+                    int i = cmd.ExecuteNonQuery();
 
                 }
 
 
-            }
+                // loading the currently enrolled classes
+                var commStr = "SELECT * from `temp` ";
 
+                cmd = new MySqlCommand(commStr, con);
 
-            // loading the avalable classes
-
-            commStr = "SELECT  course.courseid as CourseId,course.cname as Course, instructor.name as Teacher ,department.deptname as Department\r\n\tfrom course\r\nleft outer join studentcourse\r\n\ton course.courseid = studentcourse.courseid\r\nleft outer join studentinfo\r\n\ton studentcourse.studentid = studentinfo.studentid\r\nleft outer join instructor\r\n\ton instructor.iid = course.instructor\r\nleft outer join department\r\n\ton department.deptid = course.deptid\r\nwhere studentcourse.studentid != " + Global.CurrentLoggedInUser + ";";
-
-            cmd = new MySqlCommand(commStr, con);
-
-            using (cmd = new MySqlCommand(commStr, con))
-            {
-
-
-                cmd.CommandType = CommandType.Text;
-                using (MySqlDataAdapter sda = new MySqlDataAdapter(cmd))
+                using (cmd = new MySqlCommand(commStr, con))
                 {
 
-                    using (DataTable dt = new DataTable())
+
+                    cmd.CommandType = CommandType.Text;
+                    using (MySqlDataAdapter sda = new MySqlDataAdapter(cmd))
                     {
 
-                        sda.Fill(dt);
-                        AvalableClassesGrid.DataSource = dt;
+                        using (DataTable dt = new DataTable())
+                        {
+
+                            sda.Fill(dt);
+                            CurrentlyEnrolledClassesGrid.DataSource = dt;
+
+                        }
 
                     }
+
 
                 }
 
 
+                // loading the avalable classes
+
+                commStr = "select course.* \r\n\tfrom course\r\nwhere courseid not in (select CourseId from temp);";
+
+                cmd = new MySqlCommand(commStr, con);
+
+                using (cmd = new MySqlCommand(commStr, con))
+                {
+
+
+                    cmd.CommandType = CommandType.Text;
+                    using (MySqlDataAdapter sda = new MySqlDataAdapter(cmd))
+                    {
+
+                        using (DataTable dt = new DataTable())
+                        {
+
+                            sda.Fill(dt);
+                            AvalableClassesGrid.DataSource = dt;
+
+                        }
+
+                    }
+
+
+                }
+
+
+                // droping the view
+                using (cmd = new MySqlCommand("drop view `temp`;", con))
+                {
+
+                    int i = cmd.ExecuteNonQuery();
+
+                }
+
+                mySqlTransaction.Commit();
+
             }
+            catch { mySqlTransaction.Rollback(); }
 
             con.Close();
 

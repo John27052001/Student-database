@@ -93,11 +93,11 @@ left outer join studentinfo
 left outer join instructor
 	on instructor.iid = course.instructor
 left outer join department
-	on department.deptid = course.deptid
-where studentcourse.studentid = 1; # change the 1 to the username that just logged 
+	on department.deptid = course.deptid;
 
 
-SELECT  course.courseid as CourseId,course.cname as Course, instructor.name as Teacher ,department.deptname as Department
+create or replace view `temp` as 
+select  course.courseid as CourseId,course.cname as Course, instructor.name as Teacher ,department.deptname as Department
 	from course
 left outer join studentcourse
 	on course.courseid = studentcourse.courseid
@@ -108,3 +108,5 @@ left outer join instructor
 left outer join department
 	on department.deptid = course.deptid
 where studentcourse.studentid = 1; # change the 1 to the username that just logged 
+
+select * from course where course.courseid != temp.courseid;
