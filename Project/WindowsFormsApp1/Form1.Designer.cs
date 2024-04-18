@@ -42,20 +42,20 @@
             this.WelcomeBlurb = new System.Windows.Forms.Label();
             this.dahsbord = new System.Windows.Forms.Label();
             this.ClassManagePage = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.AvalableClassesGrid = new System.Windows.Forms.DataGridView();
-            this.CurrentlyEnrolledClassesGrid = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.AddClass = new System.Windows.Forms.Button();
-            this.DropClass = new System.Windows.Forms.Button();
             this.ToDashboard = new System.Windows.Forms.Button();
+            this.DropClass = new System.Windows.Forms.Button();
+            this.AddClass = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.CurrentlyEnrolledClassesGrid = new System.Windows.Forms.DataGridView();
+            this.AvalableClassesGrid = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.LoginPage.SuspendLayout();
             this.Dashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DashGridView)).BeginInit();
             this.ClassManagePage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AvalableClassesGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurrentlyEnrolledClassesGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AvalableClassesGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // LoginPassword
@@ -208,34 +208,46 @@
             this.ClassManagePage.TabIndex = 8;
             this.ClassManagePage.TabStop = false;
             // 
-            // label4
+            // ToDashboard
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 15);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Manage Classes";
+            this.ToDashboard.Location = new System.Drawing.Point(10, 468);
+            this.ToDashboard.Name = "ToDashboard";
+            this.ToDashboard.Size = new System.Drawing.Size(102, 23);
+            this.ToDashboard.TabIndex = 7;
+            this.ToDashboard.Text = "To Dashboard";
+            this.ToDashboard.UseVisualStyleBackColor = true;
+            this.ToDashboard.Click += new System.EventHandler(this.ToDashboard_Click);
             // 
-            // label5
+            // DropClass
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 40);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Avalable Classes";
+            this.DropClass.Enabled = false;
+            this.DropClass.Location = new System.Drawing.Point(10, 433);
+            this.DropClass.Name = "DropClass";
+            this.DropClass.Size = new System.Drawing.Size(75, 23);
+            this.DropClass.TabIndex = 6;
+            this.DropClass.Text = "DropClass";
+            this.DropClass.UseVisualStyleBackColor = true;
+            this.DropClass.Click += new System.EventHandler(this.DropClass_Click);
             // 
-            // AvalableClassesGrid
+            // AddClass
             // 
-            this.AvalableClassesGrid.AllowUserToAddRows = false;
-            this.AvalableClassesGrid.AllowUserToDeleteRows = false;
-            this.AvalableClassesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AvalableClassesGrid.Location = new System.Drawing.Point(10, 57);
-            this.AvalableClassesGrid.Name = "AvalableClassesGrid";
-            this.AvalableClassesGrid.ReadOnly = true;
-            this.AvalableClassesGrid.Size = new System.Drawing.Size(705, 150);
-            this.AvalableClassesGrid.TabIndex = 2;
+            this.AddClass.Enabled = false;
+            this.AddClass.Location = new System.Drawing.Point(10, 214);
+            this.AddClass.Name = "AddClass";
+            this.AddClass.Size = new System.Drawing.Size(75, 23);
+            this.AddClass.TabIndex = 5;
+            this.AddClass.Text = "Add Class";
+            this.AddClass.UseVisualStyleBackColor = true;
+            this.AddClass.Click += new System.EventHandler(this.AddClass_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 261);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(126, 13);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Currently enrolled classes";
             // 
             // CurrentlyEnrolledClassesGrid
             // 
@@ -247,43 +259,37 @@
             this.CurrentlyEnrolledClassesGrid.ReadOnly = true;
             this.CurrentlyEnrolledClassesGrid.Size = new System.Drawing.Size(705, 150);
             this.CurrentlyEnrolledClassesGrid.TabIndex = 3;
+            this.CurrentlyEnrolledClassesGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CurrentlyEnrolledClassesGrid_CellClick);
             // 
-            // label6
+            // AvalableClassesGrid
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 261);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(126, 13);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Currently enrolled classes";
+            this.AvalableClassesGrid.AllowUserToAddRows = false;
+            this.AvalableClassesGrid.AllowUserToDeleteRows = false;
+            this.AvalableClassesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AvalableClassesGrid.Location = new System.Drawing.Point(10, 57);
+            this.AvalableClassesGrid.Name = "AvalableClassesGrid";
+            this.AvalableClassesGrid.ReadOnly = true;
+            this.AvalableClassesGrid.Size = new System.Drawing.Size(705, 150);
+            this.AvalableClassesGrid.TabIndex = 2;
+            this.AvalableClassesGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AvalableClassesGrid_CellClick);
             // 
-            // AddClass
+            // label5
             // 
-            this.AddClass.Location = new System.Drawing.Point(10, 214);
-            this.AddClass.Name = "AddClass";
-            this.AddClass.Size = new System.Drawing.Size(75, 23);
-            this.AddClass.TabIndex = 5;
-            this.AddClass.Text = "Add Class";
-            this.AddClass.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(87, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Avalable Classes";
             // 
-            // DropClass
+            // label4
             // 
-            this.DropClass.Location = new System.Drawing.Point(10, 433);
-            this.DropClass.Name = "DropClass";
-            this.DropClass.Size = new System.Drawing.Size(75, 23);
-            this.DropClass.TabIndex = 6;
-            this.DropClass.Text = "DropClass";
-            this.DropClass.UseVisualStyleBackColor = true;
-            // 
-            // ToDashboard
-            // 
-            this.ToDashboard.Location = new System.Drawing.Point(10, 468);
-            this.ToDashboard.Name = "ToDashboard";
-            this.ToDashboard.Size = new System.Drawing.Size(102, 23);
-            this.ToDashboard.TabIndex = 7;
-            this.ToDashboard.Text = "To Dashboard";
-            this.ToDashboard.UseVisualStyleBackColor = true;
-            this.ToDashboard.Click += new System.EventHandler(this.ToDashboard_Click);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Manage Classes";
             // 
             // Form1
             // 
@@ -303,8 +309,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.DashGridView)).EndInit();
             this.ClassManagePage.ResumeLayout(false);
             this.ClassManagePage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AvalableClassesGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurrentlyEnrolledClassesGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AvalableClassesGrid)).EndInit();
             this.ResumeLayout(false);
 
         }

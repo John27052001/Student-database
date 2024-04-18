@@ -53,6 +53,8 @@ namespace WindowsFormsApp1
 
         }
 
+        ////////////////////////  LOGIN PAGE   ///////////////////
+
         // Logging into the thing
         private void LoginButton_Click(object sender, EventArgs e)
         {
@@ -118,9 +120,14 @@ namespace WindowsFormsApp1
         }
 
 
+        ////////////////////////  SETTING UP THE STUDENT DASHBOARD ///////////////////
+
         // setting up the Other pages
         private void InitalizeMainPage()
         {
+
+            ResettingSeletingThings();
+
             // hiding the other pages
             LoginPage.Visible = false;
 
@@ -184,6 +191,8 @@ namespace WindowsFormsApp1
 
         }
 
+        ////////////////////////  CLASS MANAGEMENT PAGE   ///////////////////
+
         // switching to the management page
         private void button1_Click(object sender, EventArgs e)
         {
@@ -200,9 +209,22 @@ namespace WindowsFormsApp1
 
         }
 
+        private void ResettingSeletingThings() {
+
+            // resettiing all values for the adding and droping classes portion of it
+            Global.SelectedEnrolledClass = "";
+            Global.SelectedCurrentEnrolledClass = "";
+            // disabeling the add / drop button
+            AddClass.Enabled = false;
+            DropClass.Enabled = false;
+
+        }
+
         // Actually loading the data into the tables
         private void loadManageTables() {
 
+
+            ResettingSeletingThings();
 
             // opening the connection
             // creating the connection
@@ -308,6 +330,119 @@ namespace WindowsFormsApp1
             InitalizeMainPage();
 
         }
+
+
+        /// SELECTING THE CLASS TO ADD TO THE STUDENT
+        private void AvalableClassesGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // retreving the selected class id
+            Global.SelectedEnrolledClass = AvalableClassesGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+            
+            Debug.Write(Global.SelectedEnrolledClass);
+            // turning on the button to add the class
+            AddClass.Enabled = true;
+
+        }
+
+        /// SELECTING THE CLASS TO DROP FROM THE STUDENT
+        private void CurrentlyEnrolledClassesGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // retreving the selected class id
+            Global.SelectedCurrentEnrolledClass = CurrentlyEnrolledClassesGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+            Debug.Write(Global.SelectedCurrentEnrolledClass);
+            // turning on the button to add the class
+            DropClass.Enabled = true;
+        }
+
+        // adding class the the student
+        private void AddClass_Click(object sender, EventArgs e)
+        {
+
+            // creating the connection
+            MySqlConnection con = new MySqlConnection(connectionString());
+
+            con.Open();
+            MySqlCommand cmd;
+
+            MySqlTransaction mySqlTransaction = con.BeginTransaction();
+            // creating view that holds the currently enrolled classes
+
+            // trying to add thing to the classes
+            try
+            {
+
+                var cmdStr = "insert into studentcourse (`studentid`,`courseid`) values ('"+ Global.CurrentLoggedInUser +"','"+ Global.SelectedEnrolledClass +"');";
+
+                using (cmd = new MySqlCommand( cmdStr ,con)) {
+
+
+                    int i = cmd.ExecuteNonQuery();
+
+                    if (i > 0)
+                    {
+
+                        // someting went wrong here
+
+                    }
+
+                }
+
+                // committing the change
+                mySqlTransaction.Commit();
+
+
+            }
+            // rolling back if someting messes up
+            catch { mySqlTransaction.Rollback(); }
+
+            loadManageTables();
+
+        }
+
+        private void DropClass_Click(object sender, EventArgs e)
+        {
+            // creating the connection
+            MySqlConnection con = new MySqlConnection(connectionString());
+
+            con.Open();
+            MySqlCommand cmd;
+
+            MySqlTransaction mySqlTransaction = con.BeginTransaction();
+            // creating view that holds the currently enrolled classes
+
+            // trying to add thing to the classes
+            try
+            {
+                //"Delete from studentcourse WHERE studentid = 1 and courseid = 1;"
+                var cmdStr = "Delete from studentcourse WHERE studentid =" + Global.CurrentLoggedInUser + " and courseid = " + Global.SelectedCurrentEnrolledClass + ";";
+                //cmdStr = "Delete from studentcourse WHERE studentid = 1 and courseid = 1;";
+
+                using (cmd = new MySqlCommand(cmdStr, con))
+                {
+
+
+                    int i = cmd.ExecuteNonQuery();
+
+                    if (i > 0)
+                    {
+
+                        // someting went wrong here
+
+                    }
+
+                }
+
+                // committing the change
+                mySqlTransaction.Commit();
+
+
+            }
+            // rolling back if someting messes up
+            catch { mySqlTransaction.Rollback(); }
+
+            loadManageTables();
+        }
     }
 
 
@@ -317,10 +452,24 @@ namespace WindowsFormsApp1
         // the current loged in user can be used for things
         private static String _CurrentLoggedInUser = null;
 
+        private static String _SelectedEnrolledClass= null;
+
+        private static String _SelectedCurrentEnrolledClass= null;
+
         public static String CurrentLoggedInUser
         {
             get { return _CurrentLoggedInUser; }
             set { _CurrentLoggedInUser = value; }
+        }
+        public static String SelectedEnrolledClass
+        {
+            get { return _SelectedEnrolledClass; }
+            set { _SelectedEnrolledClass = value; }
+        }
+        public static String SelectedCurrentEnrolledClass
+        {
+            get { return _SelectedCurrentEnrolledClass; }
+            set { _SelectedCurrentEnrolledClass = value; }
         }
 
     }
