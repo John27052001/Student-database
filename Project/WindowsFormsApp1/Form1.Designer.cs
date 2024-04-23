@@ -255,7 +255,7 @@
             // 
             // toDashboardBtn
             // 
-            this.toDashboardBtn.Location = new System.Drawing.Point(212, 314);
+            this.toDashboardBtn.Location = new System.Drawing.Point(201, 314);
             this.toDashboardBtn.Name = "toDashboardBtn";
             this.toDashboardBtn.Size = new System.Drawing.Size(121, 30);
             this.toDashboardBtn.TabIndex = 11;

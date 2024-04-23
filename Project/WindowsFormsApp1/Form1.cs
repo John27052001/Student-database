@@ -491,7 +491,9 @@ namespace WindowsFormsApp1
             MySqlConnection con = new MySqlConnection(connectionString());
             con.Open();
 
-            string updateInfo = "update studentinfo set fname = '" + fnameTxtBox.Text + "' where studentid = '" + LoginUsername.Text + "'";
+            string updateInfo = "update studentinfo set fname = '" + fnameTxtBox.Text + 
+                "', lname = '" + lnameTxtBox.Text + "', phonenum = '" + phoneTxtBox.Text +
+                "', dob = '" + dobTxtBox.Text + "' where studentid = '" + LoginUsername.Text + "'";
             MySqlCommand cmd = new MySqlCommand(updateInfo, con);
             int i = cmd.ExecuteNonQuery();
             if (i >= 1)
