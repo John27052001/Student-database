@@ -31,6 +31,8 @@ namespace WindowsFormsApp1
 
             ClassManagePage.Visible = false;
 
+            editInfoPage.Visible = false;
+
             Global.CurrentLoggedInUser = null;
 
         }
@@ -43,7 +45,8 @@ namespace WindowsFormsApp1
             // name of the server
             var uid = "root";
             // password to acess the Server
-            var password = "Doomguy2";
+            //var password = "Doomguy2";
+            var password = "st3v0hUh8!";
 
             // construction the connection string
             var conString = "Server=localhost;database=" + db + ";uid=" + uid + ";password=" + password + ";";
@@ -442,6 +445,32 @@ namespace WindowsFormsApp1
             catch { mySqlTransaction.Rollback(); }
 
             loadManageTables();
+        }
+
+        private void editInfoBtn_Click(object sender, EventArgs e)
+        {
+            Dashboard.Visible = false;
+            ClassManagePage.Visible = false;
+
+            editInfoPage.Location = new Point(12, 12);
+            editInfoPage.Visible = true;
+
+            MySqlConnection con = new MySqlConnection(connectionString());
+
+            con.Open();
+
+            string getFname = "search fname from studentinfo where studentid = " + LoginUsername.Text;
+            //MySqlCommand cmd = new MySqlCommand(getFname, con);
+            //MySqlDataReader reader = cmd.ExecuteReader();
+
+        }
+
+        private void toDashboardBtn_Click(object sender, EventArgs e)
+        {
+            editInfoPage.Visible = false;
+
+            Dashboard.Location = new Point(12, 12);
+            Dashboard.Visible = true;
         }
     }
 
