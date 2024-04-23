@@ -45,7 +45,7 @@
             this.editInfoPage = new System.Windows.Forms.GroupBox();
             this.toDashboardBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dobTxtBox = new System.Windows.Forms.TextBox();
             this.dobTxt = new System.Windows.Forms.Label();
             this.phoneTxtBox = new System.Windows.Forms.TextBox();
             this.phoneTxt = new System.Windows.Forms.Label();
@@ -237,7 +237,7 @@
             // 
             this.editInfoPage.Controls.Add(this.toDashboardBtn);
             this.editInfoPage.Controls.Add(this.saveBtn);
-            this.editInfoPage.Controls.Add(this.textBox1);
+            this.editInfoPage.Controls.Add(this.dobTxtBox);
             this.editInfoPage.Controls.Add(this.dobTxt);
             this.editInfoPage.Controls.Add(this.phoneTxtBox);
             this.editInfoPage.Controls.Add(this.phoneTxt);
@@ -271,13 +271,14 @@
             this.saveBtn.TabIndex = 9;
             this.saveBtn.Text = "Save Changes";
             this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
-            // textBox1
+            // dobTxtBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(187, 254);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(180, 22);
-            this.textBox1.TabIndex = 8;
+            this.dobTxtBox.Location = new System.Drawing.Point(187, 254);
+            this.dobTxtBox.Name = "dobTxtBox";
+            this.dobTxtBox.Size = new System.Drawing.Size(180, 22);
+            this.dobTxtBox.TabIndex = 8;
             // 
             // dobTxt
             // 
@@ -524,7 +525,7 @@
         private System.Windows.Forms.Label dobTxt;
         private System.Windows.Forms.TextBox phoneTxtBox;
         private System.Windows.Forms.Button saveBtn;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox dobTxtBox;
         private System.Windows.Forms.Button toDashboardBtn;
     }
 }

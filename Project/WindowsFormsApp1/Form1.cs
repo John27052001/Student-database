@@ -45,7 +45,8 @@ namespace WindowsFormsApp1
             // name of the server
             var uid = "root";
             // password to acess the Server
-            var password = "Doomguy2";
+            //var password = "Doomguy2";
+            var password = "st3v0hUh8!";
 
             // construction the connection string
             var conString = "Server=localhost;database=" + db + ";uid=" + uid + ";password=" + password + ";";
@@ -446,6 +447,8 @@ namespace WindowsFormsApp1
             loadManageTables();
         }
 
+
+        ///EDIT STUDENT INFO PAGE ////
         private void editInfoBtn_Click(object sender, EventArgs e)
         {
             Dashboard.Visible = false;
@@ -458,10 +461,19 @@ namespace WindowsFormsApp1
 
             con.Open();
 
-            string getFname = "search fname from studentinfo where studentid = " + LoginUsername.Text;
-            //MySqlCommand cmd = new MySqlCommand(getFname, con);
-            //MySqlDataReader reader = cmd.ExecuteReader();
+            string getFname = "select fname, lname, phonenum, dob from studentinfo where studentid = '" + LoginUsername.Text + "'";
+            MySqlCommand cmd = new MySqlCommand(getFname, con);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                fnameTxtBox.Text = reader[0].ToString();
+                lnameTxtBox.Text = reader[1].ToString();
+                phoneTxtBox.Text = reader[2].ToString();
+                dobTxtBox.Text = reader[3].ToString();
 
+                reader.Close();
+            }
+            con.Close();
         }
 
         private void toDashboardBtn_Click(object sender, EventArgs e)
@@ -470,6 +482,27 @@ namespace WindowsFormsApp1
 
             Dashboard.Location = new Point(12, 12);
             Dashboard.Visible = true;
+
+            InitalizeMainPage();
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            MySqlConnection con = new MySqlConnection(connectionString());
+            con.Open();
+
+            string updateInfo = "update studentinfo set fname = '" + fnameTxtBox.Text + "' where studentid = '" + LoginUsername.Text + "'";
+            MySqlCommand cmd = new MySqlCommand(updateInfo, con);
+            int i = cmd.ExecuteNonQuery();
+            if (i >= 1)
+            {
+                MessageBox.Show("Saved Changes");
+            }
+            else
+            {
+                MessageBox.Show("Failed to Save Changes");
+            }
+            con.Close();
         }
     }
 
