@@ -45,8 +45,7 @@ namespace WindowsFormsApp1
             // name of the server
             var uid = "root";
             // password to acess the Server
-            //var password = "Doomguy2";
-            var password = "st3v0hUh8!";
+            var password = "Doomguy2";
 
             // construction the connection string
             var conString = "Server=localhost;database=" + db + ";uid=" + uid + ";password=" + password + ";";
