@@ -11,8 +11,6 @@ left outer join department
 	on department.deptid = course.deptid
 where studentcourse.studentid = 1; # change the 1 to the username that just logged 
 
-select * from temp;
-
 
 select course.* 
 	from course

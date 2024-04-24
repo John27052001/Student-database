@@ -400,6 +400,7 @@ namespace WindowsFormsApp1
 
             loadManageTables();
 
+            con.Close();
         }
 
         private void DropClass_Click(object sender, EventArgs e)
@@ -417,7 +418,7 @@ namespace WindowsFormsApp1
             try
             {
                 //"Delete from studentcourse WHERE studentid = 1 and courseid = 1;"
-                var cmdStr = "Delete from studentcourse WHERE studentid =" + Global.CurrentLoggedInUser + " and courseid = " + Global.SelectedCurrentEnrolledClass + ";";
+                var cmdStr = "Delete from studentcourse WHERE studentid =" + Global.CurrentLoggedInUser + " and courseid = '" + Global.SelectedCurrentEnrolledClass + "';";
                 //cmdStr = "Delete from studentcourse WHERE studentid = 1 and courseid = 1;";
 
                 using (cmd = new MySqlCommand(cmdStr, con))
@@ -444,6 +445,7 @@ namespace WindowsFormsApp1
             catch { mySqlTransaction.Rollback(); }
 
             loadManageTables();
+            con.Close();
         }
 
 
@@ -458,6 +460,7 @@ namespace WindowsFormsApp1
 
             MySqlConnection con = new MySqlConnection(connectionString());
             con.Open();
+
 
             string getFname = "select fname, lname, phonenum, dob, gender from studentinfo where studentid = '" + LoginUsername.Text + "'";
             MySqlCommand cmd = new MySqlCommand(getFname, con);
@@ -499,32 +502,42 @@ namespace WindowsFormsApp1
             MySqlConnection con = new MySqlConnection(connectionString());
             con.Open();
 
-            string updateInfo;
+            // setting up the roll back stuff
+            MySqlTransaction mySqlTransaction = con.BeginTransaction();
+            try
+            {
 
-            if (genComboBox.SelectedIndex == -1)
-            {
-                updateInfo = "update studentinfo set fname = '" + fnameTxtBox.Text +
-                    "', lname = '" + lnameTxtBox.Text + "', phonenum = '" + phoneTxtBox.Text +
-                    "', dob = '" + dobTxtBox.Text + "' where studentid = '" + LoginUsername.Text + "'";
-            }
-            else
-            {
-                updateInfo = "update studentinfo set fname = '" + fnameTxtBox.Text +
-                    "', lname = '" + lnameTxtBox.Text + "', phonenum = '" + phoneTxtBox.Text +
-                    "', dob = '" + dobTxtBox.Text + "', gender = '" + genComboBox.SelectedItem.ToString() +
-                    "' where studentid = '" + LoginUsername.Text + "'";
-            }
-            
-            MySqlCommand cmd = new MySqlCommand(updateInfo, con);
-            int i = cmd.ExecuteNonQuery();
-            if (i >= 1)
-            {
-                MessageBox.Show("Saved Changes");
-            }
-            else
-            {
-                MessageBox.Show("Failed to Save Changes");
-            }
+                string updateInfo;
+
+                if (genComboBox.SelectedIndex == -1)
+                {
+                    updateInfo = "update studentinfo set fname = '" + fnameTxtBox.Text +
+                        "', lname = '" + lnameTxtBox.Text + "', phonenum = '" + phoneTxtBox.Text +
+                        "', dob = '" + dobTxtBox.Text + "' where studentid = '" + LoginUsername.Text + "'";
+                }
+                else
+                {
+                    updateInfo = "update studentinfo set fname = '" + fnameTxtBox.Text +
+                        "', lname = '" + lnameTxtBox.Text + "', phonenum = '" + phoneTxtBox.Text +
+                        "', dob = '" + dobTxtBox.Text + "', gender = '" + genComboBox.SelectedItem.ToString() +
+                        "' where studentid = '" + LoginUsername.Text + "'";
+                }
+
+                MySqlCommand cmd = new MySqlCommand(updateInfo, con);
+                int i = cmd.ExecuteNonQuery();
+                if (i >= 1)
+                {
+                    MessageBox.Show("Saved Changes");
+                    mySqlTransaction.Commit();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to Save Changes");
+                }
+
+            }// rolling back if someting messes up
+            catch { mySqlTransaction.Rollback(); }
+
             con.Close();
         }
         
@@ -534,37 +547,69 @@ namespace WindowsFormsApp1
             MySqlConnection con = new MySqlConnection(connectionString());
             con.Open();
 
-            string getOldPass = "select password from studentinfo where studentid = '" + LoginUsername.Text + "'";
-            MySqlCommand cmd = new MySqlCommand(getOldPass, con);
-            MySqlDataReader reader = cmd.ExecuteReader();
-
-            if (reader.Read())
+            // setting up the roll back stuff
+            MySqlTransaction mySqlTransaction = con.BeginTransaction();
+            try
             {
-                if (oldPassTxtBox.Text == reader[0].ToString())
+
+                string getOldPass = "select password from studentinfo where studentid = '" + LoginUsername.Text + "'";
+                
+
+                MySqlCommand cmd = new MySqlCommand(getOldPass, con);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
                 {
-                    reader.Close();
-                    string setNewPass = "update studentinfo set password = '" + newPassTxtBox.Text + "' where studentid = '" + LoginUsername.Text + "'";
-                    cmd = new MySqlCommand(setNewPass, con);
-                    int i = cmd.ExecuteNonQuery();
-                    if (i >= 1)
+                    if (oldPassTxtBox.Text == reader[0].ToString())
                     {
-                        MessageBox.Show("New Password Is Set");
+                        reader.Close();
+                        string setNewPass = "update studentinfo set password = '" + newPassTxtBox.Text + "' where studentinfo.studentid = " + Global.CurrentLoggedInUser + ";";
+                        cmd = new MySqlCommand(setNewPass, con);
+                        int i = cmd.ExecuteNonQuery();
+                        if (i >= 1)
+                        {
+                            MessageBox.Show("New Password Is Set");
+                            mySqlTransaction.Commit();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error Setting New Password");
+                        }
+                        oldPassTxtBox.Text = "";
+                        newPassTxtBox.Text = "";
                     }
                     else
                     {
-                        MessageBox.Show("Error Setting New Password");
+                        MessageBox.Show("Password is Incorrect");
                     }
-                    oldPassTxtBox.Text = "";
-                    newPassTxtBox.Text = "";
+                    reader.Close();
                 }
-                else
-                {
-                    MessageBox.Show("Password is Incorrect");
-                }
-                reader.Close();
             }
-
+            // rolling back if someting messes up
+            catch { mySqlTransaction.Rollback(); }
             con.Close();
+        }
+
+
+        // Logging out of the current account thats signed in
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            // putting the location and visability of the login screen when initalizing 
+            LoginPage.Visible = true;
+            LoginPage.Location = new Point(12, 12);
+
+            Dashboard.Visible = false;
+
+            ClassManagePage.Visible = false;
+
+            editInfoPage.Visible = false;
+
+            Global.CurrentLoggedInUser = null;
+
+            // resetting the loging stuff
+            LoginUsername.Text = "";
+            LoginPassword.Text = "";
+
         }
     }
 

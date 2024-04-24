@@ -36,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.LoginPage = new System.Windows.Forms.GroupBox();
             this.Dashboard = new System.Windows.Forms.GroupBox();
+            this.Logout = new System.Windows.Forms.Button();
             this.editInfoBtn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.DashGridView = new System.Windows.Forms.DataGridView();
@@ -83,31 +84,28 @@
             // LoginPassword
             // 
             this.LoginPassword.AccessibleName = "LoginPassword";
-            this.LoginPassword.Location = new System.Drawing.Point(396, 319);
-            this.LoginPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.LoginPassword.Location = new System.Drawing.Point(297, 259);
             this.LoginPassword.Name = "LoginPassword";
             this.LoginPassword.PasswordChar = '*';
-            this.LoginPassword.Size = new System.Drawing.Size(148, 22);
+            this.LoginPassword.Size = new System.Drawing.Size(112, 20);
             this.LoginPassword.TabIndex = 0;
             // 
             // Label
             // 
             this.Label.AccessibleName = "LoginUsername";
             this.Label.AutoSize = true;
-            this.Label.Location = new System.Drawing.Point(396, 299);
-            this.Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label.Location = new System.Drawing.Point(297, 243);
             this.Label.Name = "Label";
-            this.Label.Size = new System.Drawing.Size(67, 16);
+            this.Label.Size = new System.Drawing.Size(53, 13);
             this.Label.TabIndex = 1;
             this.Label.Text = "Password";
             // 
             // LoginButton
             // 
             this.LoginButton.AccessibleName = "LoginButton";
-            this.LoginButton.Location = new System.Drawing.Point(417, 372);
-            this.LoginButton.Margin = new System.Windows.Forms.Padding(4);
+            this.LoginButton.Location = new System.Drawing.Point(313, 302);
             this.LoginButton.Name = "LoginButton";
-            this.LoginButton.Size = new System.Drawing.Size(100, 28);
+            this.LoginButton.Size = new System.Drawing.Size(75, 23);
             this.LoginButton.TabIndex = 6;
             this.LoginButton.Text = "Login";
             this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
@@ -115,28 +113,25 @@
             // label1
             // 
             this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 28);
+            this.label1.Size = new System.Drawing.Size(100, 23);
             this.label1.TabIndex = 0;
             // 
             // LoginUsername
             // 
             this.LoginUsername.AccessibleName = "LoginUsername";
-            this.LoginUsername.Location = new System.Drawing.Point(396, 271);
-            this.LoginUsername.Margin = new System.Windows.Forms.Padding(4);
+            this.LoginUsername.Location = new System.Drawing.Point(297, 220);
             this.LoginUsername.Name = "LoginUsername";
-            this.LoginUsername.Size = new System.Drawing.Size(148, 22);
+            this.LoginUsername.Size = new System.Drawing.Size(112, 20);
             this.LoginUsername.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AccessibleName = "LoginUsername";
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(396, 251);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(297, 204);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 16);
+            this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Username";
             // 
@@ -148,36 +143,44 @@
             this.LoginPage.Controls.Add(this.Label);
             this.LoginPage.Controls.Add(this.LoginUsername);
             this.LoginPage.Controls.Add(this.LoginButton);
-            this.LoginPage.Location = new System.Drawing.Point(16, 638);
-            this.LoginPage.Margin = new System.Windows.Forms.Padding(4);
+            this.LoginPage.Location = new System.Drawing.Point(12, 12);
             this.LoginPage.Name = "LoginPage";
-            this.LoginPage.Padding = new System.Windows.Forms.Padding(4);
-            this.LoginPage.Size = new System.Drawing.Size(979, 622);
+            this.LoginPage.Size = new System.Drawing.Size(734, 505);
             this.LoginPage.TabIndex = 6;
             this.LoginPage.TabStop = false;
             this.LoginPage.Visible = false;
             // 
             // Dashboard
             // 
+            this.Dashboard.Controls.Add(this.Logout);
             this.Dashboard.Controls.Add(this.editInfoBtn);
             this.Dashboard.Controls.Add(this.button1);
             this.Dashboard.Controls.Add(this.DashGridView);
             this.Dashboard.Controls.Add(this.label3);
             this.Dashboard.Controls.Add(this.WelcomeBlurb);
             this.Dashboard.Controls.Add(this.dahsbord);
-            this.Dashboard.Location = new System.Drawing.Point(1001, 152);
-            this.Dashboard.Margin = new System.Windows.Forms.Padding(4);
+            this.Dashboard.Location = new System.Drawing.Point(752, 545);
             this.Dashboard.Name = "Dashboard";
-            this.Dashboard.Padding = new System.Windows.Forms.Padding(4);
-            this.Dashboard.Size = new System.Drawing.Size(979, 615);
+            this.Dashboard.Size = new System.Drawing.Size(734, 500);
             this.Dashboard.TabIndex = 7;
             this.Dashboard.TabStop = false;
             // 
+            // Logout
+            // 
+            this.Logout.Location = new System.Drawing.Point(612, 461);
+            this.Logout.Name = "Logout";
+            this.Logout.Size = new System.Drawing.Size(105, 23);
+            this.Logout.TabIndex = 6;
+            this.Logout.Text = "Log Out";
+            this.Logout.UseVisualStyleBackColor = true;
+            this.Logout.Click += new System.EventHandler(this.Logout_Click);
+            // 
             // editInfoBtn
             // 
-            this.editInfoBtn.Location = new System.Drawing.Point(176, 569);
+            this.editInfoBtn.Location = new System.Drawing.Point(132, 462);
+            this.editInfoBtn.Margin = new System.Windows.Forms.Padding(2);
             this.editInfoBtn.Name = "editInfoBtn";
-            this.editInfoBtn.Size = new System.Drawing.Size(120, 28);
+            this.editInfoBtn.Size = new System.Drawing.Size(90, 23);
             this.editInfoBtn.TabIndex = 5;
             this.editInfoBtn.Text = "Edit Info";
             this.editInfoBtn.UseVisualStyleBackColor = true;
@@ -185,10 +188,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(29, 569);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(22, 462);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 28);
+            this.button1.Size = new System.Drawing.Size(105, 23);
             this.button1.TabIndex = 4;
             this.button1.Text = "Manage Classes";
             this.button1.UseVisualStyleBackColor = true;
@@ -201,22 +203,20 @@
             this.DashGridView.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.DashGridView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.DashGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DashGridView.Location = new System.Drawing.Point(29, 210);
-            this.DashGridView.Margin = new System.Windows.Forms.Padding(4);
+            this.DashGridView.Location = new System.Drawing.Point(22, 171);
             this.DashGridView.Name = "DashGridView";
             this.DashGridView.ReadOnly = true;
             this.DashGridView.RowHeadersWidth = 51;
-            this.DashGridView.Size = new System.Drawing.Size(917, 350);
+            this.DashGridView.Size = new System.Drawing.Size(688, 284);
             this.DashGridView.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(24, 171);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(18, 139);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(249, 25);
+            this.label3.Size = new System.Drawing.Size(198, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Currently Enrolled Classes:";
             // 
@@ -224,20 +224,18 @@
             // 
             this.WelcomeBlurb.AutoSize = true;
             this.WelcomeBlurb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WelcomeBlurb.Location = new System.Drawing.Point(24, 52);
-            this.WelcomeBlurb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.WelcomeBlurb.Location = new System.Drawing.Point(18, 42);
             this.WelcomeBlurb.Name = "WelcomeBlurb";
-            this.WelcomeBlurb.Size = new System.Drawing.Size(272, 100);
+            this.WelcomeBlurb.Size = new System.Drawing.Size(214, 80);
             this.WelcomeBlurb.TabIndex = 1;
             this.WelcomeBlurb.Text = "Welcome {FNAME} {LNAME}\r\nPhoneNumb: {PhoneNum}\r\nDOB: {DOB}\r\nGender: {Gender} \r\n";
             // 
             // dahsbord
             // 
             this.dahsbord.AutoSize = true;
-            this.dahsbord.Location = new System.Drawing.Point(8, 19);
-            this.dahsbord.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.dahsbord.Location = new System.Drawing.Point(6, 15);
             this.dahsbord.Name = "dahsbord";
-            this.dahsbord.Size = new System.Drawing.Size(75, 16);
+            this.dahsbord.Size = new System.Drawing.Size(59, 13);
             this.dahsbord.TabIndex = 0;
             this.dahsbord.Text = "Dashboard";
             // 
@@ -262,18 +260,20 @@
             this.editInfoPage.Controls.Add(this.fnameTxtBox);
             this.editInfoPage.Controls.Add(this.fnameTxt);
             this.editInfoPage.Controls.Add(this.editInfoTxt);
-            this.editInfoPage.Location = new System.Drawing.Point(16, 22);
+            this.editInfoPage.Location = new System.Drawing.Point(774, 30);
+            this.editInfoPage.Margin = new System.Windows.Forms.Padding(2);
             this.editInfoPage.Name = "editInfoPage";
-            this.editInfoPage.Size = new System.Drawing.Size(977, 605);
+            this.editInfoPage.Padding = new System.Windows.Forms.Padding(2);
+            this.editInfoPage.Size = new System.Drawing.Size(733, 492);
             this.editInfoPage.TabIndex = 8;
             this.editInfoPage.TabStop = false;
-            this.editInfoPage.Text = "Edit Info";
             // 
             // saveChangePassBtn
             // 
-            this.saveChangePassBtn.Location = new System.Drawing.Point(531, 257);
+            this.saveChangePassBtn.Location = new System.Drawing.Point(398, 208);
+            this.saveChangePassBtn.Margin = new System.Windows.Forms.Padding(2);
             this.saveChangePassBtn.Name = "saveChangePassBtn";
-            this.saveChangePassBtn.Size = new System.Drawing.Size(81, 27);
+            this.saveChangePassBtn.Size = new System.Drawing.Size(61, 22);
             this.saveChangePassBtn.TabIndex = 19;
             this.saveChangePassBtn.Text = "Save";
             this.saveChangePassBtn.UseVisualStyleBackColor = true;
@@ -281,35 +281,40 @@
             // 
             // newPassTxtBox
             // 
-            this.newPassTxtBox.Location = new System.Drawing.Point(681, 202);
+            this.newPassTxtBox.Location = new System.Drawing.Point(511, 164);
+            this.newPassTxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.newPassTxtBox.Name = "newPassTxtBox";
-            this.newPassTxtBox.Size = new System.Drawing.Size(155, 22);
+            this.newPassTxtBox.PasswordChar = '*';
+            this.newPassTxtBox.Size = new System.Drawing.Size(117, 20);
             this.newPassTxtBox.TabIndex = 18;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(527, 204);
+            this.label8.Location = new System.Drawing.Point(395, 166);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(126, 20);
+            this.label8.Size = new System.Drawing.Size(104, 17);
             this.label8.TabIndex = 17;
             this.label8.Text = "New Password:";
             // 
             // oldPassTxtBox
             // 
-            this.oldPassTxtBox.Location = new System.Drawing.Point(681, 156);
+            this.oldPassTxtBox.Location = new System.Drawing.Point(511, 127);
+            this.oldPassTxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.oldPassTxtBox.Name = "oldPassTxtBox";
-            this.oldPassTxtBox.Size = new System.Drawing.Size(155, 22);
+            this.oldPassTxtBox.Size = new System.Drawing.Size(117, 20);
             this.oldPassTxtBox.TabIndex = 16;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(527, 156);
+            this.label7.Location = new System.Drawing.Point(395, 127);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(119, 20);
+            this.label7.Size = new System.Drawing.Size(99, 17);
             this.label7.TabIndex = 15;
             this.label7.Text = "Old Password:";
             // 
@@ -317,9 +322,10 @@
             // 
             this.changePasswordTxt.AutoSize = true;
             this.changePasswordTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.changePasswordTxt.Location = new System.Drawing.Point(526, 94);
+            this.changePasswordTxt.Location = new System.Drawing.Point(394, 76);
+            this.changePasswordTxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.changePasswordTxt.Name = "changePasswordTxt";
-            this.changePasswordTxt.Size = new System.Drawing.Size(173, 25);
+            this.changePasswordTxt.Size = new System.Drawing.Size(138, 20);
             this.changePasswordTxt.TabIndex = 14;
             this.changePasswordTxt.Text = "Change Password";
             // 
@@ -328,26 +334,29 @@
             this.genComboBox.AllowDrop = true;
             this.genComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.genComboBox.FormattingEnabled = true;
-            this.genComboBox.Location = new System.Drawing.Point(187, 306);
+            this.genComboBox.Location = new System.Drawing.Point(140, 249);
+            this.genComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.genComboBox.Name = "genComboBox";
-            this.genComboBox.Size = new System.Drawing.Size(180, 24);
+            this.genComboBox.Size = new System.Drawing.Size(136, 21);
             this.genComboBox.TabIndex = 13;
             // 
             // genderTxt
             // 
             this.genderTxt.AutoSize = true;
             this.genderTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.genderTxt.Location = new System.Drawing.Point(59, 306);
+            this.genderTxt.Location = new System.Drawing.Point(44, 249);
+            this.genderTxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.genderTxt.Name = "genderTxt";
-            this.genderTxt.Size = new System.Drawing.Size(69, 20);
+            this.genderTxt.Size = new System.Drawing.Size(60, 17);
             this.genderTxt.TabIndex = 12;
             this.genderTxt.Text = "Gender:";
             // 
             // toDashboardBtn
             // 
-            this.toDashboardBtn.Location = new System.Drawing.Point(201, 364);
+            this.toDashboardBtn.Location = new System.Drawing.Point(151, 296);
+            this.toDashboardBtn.Margin = new System.Windows.Forms.Padding(2);
             this.toDashboardBtn.Name = "toDashboardBtn";
-            this.toDashboardBtn.Size = new System.Drawing.Size(121, 30);
+            this.toDashboardBtn.Size = new System.Drawing.Size(91, 24);
             this.toDashboardBtn.TabIndex = 11;
             this.toDashboardBtn.Text = "To Dashboard";
             this.toDashboardBtn.UseVisualStyleBackColor = true;
@@ -355,9 +364,10 @@
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(59, 364);
+            this.saveBtn.Location = new System.Drawing.Point(44, 296);
+            this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
             this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(121, 30);
+            this.saveBtn.Size = new System.Drawing.Size(91, 24);
             this.saveBtn.TabIndex = 9;
             this.saveBtn.Text = "Save Changes";
             this.saveBtn.UseVisualStyleBackColor = true;
@@ -365,69 +375,77 @@
             // 
             // dobTxtBox
             // 
-            this.dobTxtBox.Location = new System.Drawing.Point(187, 254);
+            this.dobTxtBox.Location = new System.Drawing.Point(140, 206);
+            this.dobTxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.dobTxtBox.Name = "dobTxtBox";
-            this.dobTxtBox.Size = new System.Drawing.Size(180, 22);
+            this.dobTxtBox.Size = new System.Drawing.Size(136, 20);
             this.dobTxtBox.TabIndex = 8;
             // 
             // dobTxt
             // 
             this.dobTxt.AutoSize = true;
             this.dobTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dobTxt.Location = new System.Drawing.Point(59, 256);
+            this.dobTxt.Location = new System.Drawing.Point(44, 208);
+            this.dobTxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dobTxt.Name = "dobTxt";
-            this.dobTxt.Size = new System.Drawing.Size(52, 20);
+            this.dobTxt.Size = new System.Drawing.Size(42, 17);
             this.dobTxt.TabIndex = 7;
             this.dobTxt.Text = "DOB:";
             // 
             // phoneTxtBox
             // 
-            this.phoneTxtBox.Location = new System.Drawing.Point(187, 202);
+            this.phoneTxtBox.Location = new System.Drawing.Point(140, 164);
+            this.phoneTxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.phoneTxtBox.Name = "phoneTxtBox";
-            this.phoneTxtBox.Size = new System.Drawing.Size(180, 22);
+            this.phoneTxtBox.Size = new System.Drawing.Size(136, 20);
             this.phoneTxtBox.TabIndex = 6;
             // 
             // phoneTxt
             // 
             this.phoneTxt.AutoSize = true;
             this.phoneTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneTxt.Location = new System.Drawing.Point(59, 204);
+            this.phoneTxt.Location = new System.Drawing.Point(44, 166);
+            this.phoneTxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.phoneTxt.Name = "phoneTxt";
-            this.phoneTxt.Size = new System.Drawing.Size(61, 20);
+            this.phoneTxt.Size = new System.Drawing.Size(53, 17);
             this.phoneTxt.TabIndex = 5;
             this.phoneTxt.Text = "Phone:";
             // 
             // lnameTxtBox
             // 
-            this.lnameTxtBox.Location = new System.Drawing.Point(187, 149);
+            this.lnameTxtBox.Location = new System.Drawing.Point(140, 121);
+            this.lnameTxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.lnameTxtBox.Name = "lnameTxtBox";
-            this.lnameTxtBox.Size = new System.Drawing.Size(180, 22);
+            this.lnameTxtBox.Size = new System.Drawing.Size(136, 20);
             this.lnameTxtBox.TabIndex = 4;
             // 
             // lnameTxt
             // 
             this.lnameTxt.AutoSize = true;
             this.lnameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnameTxt.Location = new System.Drawing.Point(59, 148);
+            this.lnameTxt.Location = new System.Drawing.Point(44, 120);
+            this.lnameTxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lnameTxt.Name = "lnameTxt";
-            this.lnameTxt.Size = new System.Drawing.Size(96, 20);
+            this.lnameTxt.Size = new System.Drawing.Size(80, 17);
             this.lnameTxt.TabIndex = 3;
             this.lnameTxt.Text = "Last Name:";
             // 
             // fnameTxtBox
             // 
-            this.fnameTxtBox.Location = new System.Drawing.Point(187, 94);
+            this.fnameTxtBox.Location = new System.Drawing.Point(140, 76);
+            this.fnameTxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.fnameTxtBox.Name = "fnameTxtBox";
-            this.fnameTxtBox.Size = new System.Drawing.Size(180, 22);
+            this.fnameTxtBox.Size = new System.Drawing.Size(136, 20);
             this.fnameTxtBox.TabIndex = 2;
             // 
             // fnameTxt
             // 
             this.fnameTxt.AutoSize = true;
             this.fnameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fnameTxt.Location = new System.Drawing.Point(59, 94);
+            this.fnameTxt.Location = new System.Drawing.Point(44, 76);
+            this.fnameTxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.fnameTxt.Name = "fnameTxt";
-            this.fnameTxt.Size = new System.Drawing.Size(97, 20);
+            this.fnameTxt.Size = new System.Drawing.Size(80, 17);
             this.fnameTxt.TabIndex = 1;
             this.fnameTxt.Text = "First Name:";
             // 
@@ -435,9 +453,10 @@
             // 
             this.editInfoTxt.AutoSize = true;
             this.editInfoTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editInfoTxt.Location = new System.Drawing.Point(54, 40);
+            this.editInfoTxt.Location = new System.Drawing.Point(40, 32);
+            this.editInfoTxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.editInfoTxt.Name = "editInfoTxt";
-            this.editInfoTxt.Size = new System.Drawing.Size(268, 29);
+            this.editInfoTxt.Size = new System.Drawing.Size(208, 24);
             this.editInfoTxt.TabIndex = 0;
             this.editInfoTxt.Text = "Edit Student Information";
             // 
@@ -451,20 +470,17 @@
             this.ClassManagePage.Controls.Add(this.AvalableClassesGrid);
             this.ClassManagePage.Controls.Add(this.label5);
             this.ClassManagePage.Controls.Add(this.label4);
-            this.ClassManagePage.Location = new System.Drawing.Point(16, 15);
-            this.ClassManagePage.Margin = new System.Windows.Forms.Padding(4);
+            this.ClassManagePage.Location = new System.Drawing.Point(13, 545);
             this.ClassManagePage.Name = "ClassManagePage";
-            this.ClassManagePage.Padding = new System.Windows.Forms.Padding(4);
-            this.ClassManagePage.Size = new System.Drawing.Size(977, 612);
+            this.ClassManagePage.Size = new System.Drawing.Size(733, 497);
             this.ClassManagePage.TabIndex = 8;
             this.ClassManagePage.TabStop = false;
             // 
             // ToDashboard
             // 
-            this.ToDashboard.Location = new System.Drawing.Point(13, 576);
-            this.ToDashboard.Margin = new System.Windows.Forms.Padding(4);
+            this.ToDashboard.Location = new System.Drawing.Point(10, 468);
             this.ToDashboard.Name = "ToDashboard";
-            this.ToDashboard.Size = new System.Drawing.Size(136, 28);
+            this.ToDashboard.Size = new System.Drawing.Size(102, 23);
             this.ToDashboard.TabIndex = 7;
             this.ToDashboard.Text = "To Dashboard";
             this.ToDashboard.UseVisualStyleBackColor = true;
@@ -473,10 +489,9 @@
             // DropClass
             // 
             this.DropClass.Enabled = false;
-            this.DropClass.Location = new System.Drawing.Point(13, 533);
-            this.DropClass.Margin = new System.Windows.Forms.Padding(4);
+            this.DropClass.Location = new System.Drawing.Point(10, 433);
             this.DropClass.Name = "DropClass";
-            this.DropClass.Size = new System.Drawing.Size(100, 28);
+            this.DropClass.Size = new System.Drawing.Size(75, 23);
             this.DropClass.TabIndex = 6;
             this.DropClass.Text = "DropClass";
             this.DropClass.UseVisualStyleBackColor = true;
@@ -485,10 +500,9 @@
             // AddClass
             // 
             this.AddClass.Enabled = false;
-            this.AddClass.Location = new System.Drawing.Point(13, 263);
-            this.AddClass.Margin = new System.Windows.Forms.Padding(4);
+            this.AddClass.Location = new System.Drawing.Point(10, 214);
             this.AddClass.Name = "AddClass";
-            this.AddClass.Size = new System.Drawing.Size(100, 28);
+            this.AddClass.Size = new System.Drawing.Size(75, 23);
             this.AddClass.TabIndex = 5;
             this.AddClass.Text = "Add Class";
             this.AddClass.UseVisualStyleBackColor = true;
@@ -497,10 +511,9 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 321);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(7, 261);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(161, 16);
+            this.label6.Size = new System.Drawing.Size(126, 13);
             this.label6.TabIndex = 4;
             this.label6.Text = "Currently enrolled classes";
             // 
@@ -509,12 +522,11 @@
             this.CurrentlyEnrolledClassesGrid.AllowUserToAddRows = false;
             this.CurrentlyEnrolledClassesGrid.AllowUserToDeleteRows = false;
             this.CurrentlyEnrolledClassesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CurrentlyEnrolledClassesGrid.Location = new System.Drawing.Point(13, 341);
-            this.CurrentlyEnrolledClassesGrid.Margin = new System.Windows.Forms.Padding(4);
+            this.CurrentlyEnrolledClassesGrid.Location = new System.Drawing.Point(10, 277);
             this.CurrentlyEnrolledClassesGrid.Name = "CurrentlyEnrolledClassesGrid";
             this.CurrentlyEnrolledClassesGrid.ReadOnly = true;
             this.CurrentlyEnrolledClassesGrid.RowHeadersWidth = 51;
-            this.CurrentlyEnrolledClassesGrid.Size = new System.Drawing.Size(940, 185);
+            this.CurrentlyEnrolledClassesGrid.Size = new System.Drawing.Size(705, 150);
             this.CurrentlyEnrolledClassesGrid.TabIndex = 3;
             this.CurrentlyEnrolledClassesGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CurrentlyEnrolledClassesGrid_CellClick);
             // 
@@ -523,48 +535,44 @@
             this.AvalableClassesGrid.AllowUserToAddRows = false;
             this.AvalableClassesGrid.AllowUserToDeleteRows = false;
             this.AvalableClassesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AvalableClassesGrid.Location = new System.Drawing.Point(13, 70);
-            this.AvalableClassesGrid.Margin = new System.Windows.Forms.Padding(4);
+            this.AvalableClassesGrid.Location = new System.Drawing.Point(10, 57);
             this.AvalableClassesGrid.Name = "AvalableClassesGrid";
             this.AvalableClassesGrid.ReadOnly = true;
             this.AvalableClassesGrid.RowHeadersWidth = 51;
-            this.AvalableClassesGrid.Size = new System.Drawing.Size(940, 185);
+            this.AvalableClassesGrid.Size = new System.Drawing.Size(705, 150);
             this.AvalableClassesGrid.TabIndex = 2;
             this.AvalableClassesGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AvalableClassesGrid_CellClick);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 49);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(7, 40);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 16);
+            this.label5.Size = new System.Drawing.Size(87, 13);
             this.label5.TabIndex = 1;
             this.label5.Text = "Avalable Classes";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 18);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(7, 15);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(109, 16);
+            this.label4.Size = new System.Drawing.Size(85, 13);
             this.label4.TabIndex = 0;
             this.label4.Text = "Manage Classes";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1011, 651);
+            this.ClientSize = new System.Drawing.Size(757, 528);
             this.Controls.Add(this.editInfoPage);
             this.Controls.Add(this.ClassManagePage);
             this.Controls.Add(this.Dashboard);
             this.Controls.Add(this.LoginPage);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "StudentDatabase";
             this.LoginPage.ResumeLayout(false);
             this.LoginPage.PerformLayout();
             this.Dashboard.ResumeLayout(false);
@@ -625,6 +633,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label changePasswordTxt;
         private System.Windows.Forms.Button saveChangePassBtn;
+        private System.Windows.Forms.Button Logout;
     }
 }
 
