@@ -45,8 +45,7 @@ namespace WindowsFormsApp1
             // name of the server
             var uid = "root";
             // password to acess the Server
-            //var password = "Doomguy2";
-            var password = "st3v0hUh8!";
+            var password = "Doomguy2";
 
             // construction the connection string
             var conString = "Server=localhost;database=" + db + ";uid=" + uid + ";password=" + password + ";";
@@ -461,7 +460,7 @@ namespace WindowsFormsApp1
 
             con.Open();
 
-            string getFname = "select fname, lname, phonenum, dob from studentinfo where studentid = '" + LoginUsername.Text + "'";
+            string getFname = "select fname, lname, phonenum, dob, gender from studentinfo where studentid = '" + LoginUsername.Text + "'";
             MySqlCommand cmd = new MySqlCommand(getFname, con);
             MySqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
@@ -473,9 +472,14 @@ namespace WindowsFormsApp1
 
                 reader.Close();
             }
+
+            genComboBox.Items.Add("Male");
+            genComboBox.Items.Add("Female");
+
             con.Close();
         }
 
+        // back to dashboard from edit info page
         private void toDashboardBtn_Click(object sender, EventArgs e)
         {
             editInfoPage.Visible = false;
@@ -483,17 +487,35 @@ namespace WindowsFormsApp1
             Dashboard.Location = new Point(12, 12);
             Dashboard.Visible = true;
 
+            // Reset gender combo box
+            genComboBox.Items.Remove("Male");
+            genComboBox.Items.Remove("Female");
+
             InitalizeMainPage();
         }
 
+        // saving changes from new input
         private void saveBtn_Click(object sender, EventArgs e)
         {
             MySqlConnection con = new MySqlConnection(connectionString());
             con.Open();
 
-            string updateInfo = "update studentinfo set fname = '" + fnameTxtBox.Text + 
-                "', lname = '" + lnameTxtBox.Text + "', phonenum = '" + phoneTxtBox.Text +
-                "', dob = '" + dobTxtBox.Text + "' where studentid = '" + LoginUsername.Text + "'";
+            string updateInfo;
+
+            if (genComboBox.SelectedIndex == -1)
+            {
+                updateInfo = "update studentinfo set fname = '" + fnameTxtBox.Text +
+                    "', lname = '" + lnameTxtBox.Text + "', phonenum = '" + phoneTxtBox.Text +
+                    "', dob = '" + dobTxtBox.Text + "' where studentid = '" + LoginUsername.Text + "'";
+            }
+            else
+            {
+                updateInfo = "update studentinfo set fname = '" + fnameTxtBox.Text +
+                    "', lname = '" + lnameTxtBox.Text + "', phonenum = '" + phoneTxtBox.Text +
+                    "', dob = '" + dobTxtBox.Text + "', gender = '" + genComboBox.SelectedItem.ToString() +
+                    "' where studentid = '" + LoginUsername.Text + "'";
+            }
+            
             MySqlCommand cmd = new MySqlCommand(updateInfo, con);
             int i = cmd.ExecuteNonQuery();
             if (i >= 1)

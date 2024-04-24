@@ -43,6 +43,8 @@
             this.WelcomeBlurb = new System.Windows.Forms.Label();
             this.dahsbord = new System.Windows.Forms.Label();
             this.editInfoPage = new System.Windows.Forms.GroupBox();
+            this.genComboBox = new System.Windows.Forms.ComboBox();
+            this.genderTxt = new System.Windows.Forms.Label();
             this.toDashboardBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
             this.dobTxtBox = new System.Windows.Forms.TextBox();
@@ -235,6 +237,8 @@
             // 
             // editInfoPage
             // 
+            this.editInfoPage.Controls.Add(this.genComboBox);
+            this.editInfoPage.Controls.Add(this.genderTxt);
             this.editInfoPage.Controls.Add(this.toDashboardBtn);
             this.editInfoPage.Controls.Add(this.saveBtn);
             this.editInfoPage.Controls.Add(this.dobTxtBox);
@@ -253,9 +257,29 @@
             this.editInfoPage.TabStop = false;
             this.editInfoPage.Text = "Edit Info";
             // 
+            // genComboBox
+            // 
+            this.genComboBox.AllowDrop = true;
+            this.genComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.genComboBox.FormattingEnabled = true;
+            this.genComboBox.Location = new System.Drawing.Point(187, 306);
+            this.genComboBox.Name = "genComboBox";
+            this.genComboBox.Size = new System.Drawing.Size(180, 24);
+            this.genComboBox.TabIndex = 13;
+            // 
+            // genderTxt
+            // 
+            this.genderTxt.AutoSize = true;
+            this.genderTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.genderTxt.Location = new System.Drawing.Point(59, 306);
+            this.genderTxt.Name = "genderTxt";
+            this.genderTxt.Size = new System.Drawing.Size(69, 20);
+            this.genderTxt.TabIndex = 12;
+            this.genderTxt.Text = "Gender:";
+            // 
             // toDashboardBtn
             // 
-            this.toDashboardBtn.Location = new System.Drawing.Point(201, 314);
+            this.toDashboardBtn.Location = new System.Drawing.Point(201, 364);
             this.toDashboardBtn.Name = "toDashboardBtn";
             this.toDashboardBtn.Size = new System.Drawing.Size(121, 30);
             this.toDashboardBtn.TabIndex = 11;
@@ -265,7 +289,7 @@
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(59, 314);
+            this.saveBtn.Location = new System.Drawing.Point(59, 364);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(121, 30);
             this.saveBtn.TabIndex = 9;
@@ -527,6 +551,8 @@
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.TextBox dobTxtBox;
         private System.Windows.Forms.Button toDashboardBtn;
+        private System.Windows.Forms.ComboBox genComboBox;
+        private System.Windows.Forms.Label genderTxt;
     }
 }
 
