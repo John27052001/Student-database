@@ -45,8 +45,8 @@ namespace WindowsFormsApp1
             // name of the server
             var uid = "root";
             // password to acess the Server
-            var password = "Doomguy2";
-
+            //var password = "Doomguy2";
+            var password = "st3v0hUh8!";
             // construction the connection string
             var conString = "Server=localhost;database=" + db + ";uid=" + uid + ";password=" + password + ";";
 
@@ -457,7 +457,6 @@ namespace WindowsFormsApp1
             editInfoPage.Visible = true;
 
             MySqlConnection con = new MySqlConnection(connectionString());
-
             con.Open();
 
             string getFname = "select fname, lname, phonenum, dob, gender from studentinfo where studentid = '" + LoginUsername.Text + "'";
@@ -473,10 +472,10 @@ namespace WindowsFormsApp1
                 reader.Close();
             }
 
+            con.Close();
+
             genComboBox.Items.Add("Male");
             genComboBox.Items.Add("Female");
-
-            con.Close();
         }
 
         // back to dashboard from edit info page
@@ -526,6 +525,45 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("Failed to Save Changes");
             }
+            con.Close();
+        }
+        
+        // Change password
+        private void saveChangePassBtn_Click(object sender, EventArgs e)
+        {
+            MySqlConnection con = new MySqlConnection(connectionString());
+            con.Open();
+
+            string getOldPass = "select password from studentinfo where studentid = '" + LoginUsername.Text + "'";
+            MySqlCommand cmd = new MySqlCommand(getOldPass, con);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                if (oldPassTxtBox.Text == reader[0].ToString())
+                {
+                    reader.Close();
+                    string setNewPass = "update studentinfo set password = '" + newPassTxtBox.Text + "' where studentid = '" + LoginUsername.Text + "'";
+                    cmd = new MySqlCommand(setNewPass, con);
+                    int i = cmd.ExecuteNonQuery();
+                    if (i >= 1)
+                    {
+                        MessageBox.Show("New Password Is Set");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error Setting New Password");
+                    }
+                    oldPassTxtBox.Text = "";
+                    newPassTxtBox.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Password is Incorrect");
+                }
+                reader.Close();
+            }
+
             con.Close();
         }
     }

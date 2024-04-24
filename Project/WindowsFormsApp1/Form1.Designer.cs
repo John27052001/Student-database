@@ -43,6 +43,12 @@
             this.WelcomeBlurb = new System.Windows.Forms.Label();
             this.dahsbord = new System.Windows.Forms.Label();
             this.editInfoPage = new System.Windows.Forms.GroupBox();
+            this.saveChangePassBtn = new System.Windows.Forms.Button();
+            this.newPassTxtBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.oldPassTxtBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.changePasswordTxt = new System.Windows.Forms.Label();
             this.genComboBox = new System.Windows.Forms.ComboBox();
             this.genderTxt = new System.Windows.Forms.Label();
             this.toDashboardBtn = new System.Windows.Forms.Button();
@@ -237,6 +243,12 @@
             // 
             // editInfoPage
             // 
+            this.editInfoPage.Controls.Add(this.saveChangePassBtn);
+            this.editInfoPage.Controls.Add(this.newPassTxtBox);
+            this.editInfoPage.Controls.Add(this.label8);
+            this.editInfoPage.Controls.Add(this.oldPassTxtBox);
+            this.editInfoPage.Controls.Add(this.label7);
+            this.editInfoPage.Controls.Add(this.changePasswordTxt);
             this.editInfoPage.Controls.Add(this.genComboBox);
             this.editInfoPage.Controls.Add(this.genderTxt);
             this.editInfoPage.Controls.Add(this.toDashboardBtn);
@@ -256,6 +268,60 @@
             this.editInfoPage.TabIndex = 8;
             this.editInfoPage.TabStop = false;
             this.editInfoPage.Text = "Edit Info";
+            // 
+            // saveChangePassBtn
+            // 
+            this.saveChangePassBtn.Location = new System.Drawing.Point(531, 257);
+            this.saveChangePassBtn.Name = "saveChangePassBtn";
+            this.saveChangePassBtn.Size = new System.Drawing.Size(81, 27);
+            this.saveChangePassBtn.TabIndex = 19;
+            this.saveChangePassBtn.Text = "Save";
+            this.saveChangePassBtn.UseVisualStyleBackColor = true;
+            this.saveChangePassBtn.Click += new System.EventHandler(this.saveChangePassBtn_Click);
+            // 
+            // newPassTxtBox
+            // 
+            this.newPassTxtBox.Location = new System.Drawing.Point(681, 202);
+            this.newPassTxtBox.Name = "newPassTxtBox";
+            this.newPassTxtBox.Size = new System.Drawing.Size(155, 22);
+            this.newPassTxtBox.TabIndex = 18;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(527, 204);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(126, 20);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "New Password:";
+            // 
+            // oldPassTxtBox
+            // 
+            this.oldPassTxtBox.Location = new System.Drawing.Point(681, 156);
+            this.oldPassTxtBox.Name = "oldPassTxtBox";
+            this.oldPassTxtBox.Size = new System.Drawing.Size(155, 22);
+            this.oldPassTxtBox.TabIndex = 16;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(527, 156);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(119, 20);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Old Password:";
+            // 
+            // changePasswordTxt
+            // 
+            this.changePasswordTxt.AutoSize = true;
+            this.changePasswordTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changePasswordTxt.Location = new System.Drawing.Point(526, 94);
+            this.changePasswordTxt.Name = "changePasswordTxt";
+            this.changePasswordTxt.Size = new System.Drawing.Size(173, 25);
+            this.changePasswordTxt.TabIndex = 14;
+            this.changePasswordTxt.Text = "Change Password";
             // 
             // genComboBox
             // 
@@ -553,6 +619,12 @@
         private System.Windows.Forms.Button toDashboardBtn;
         private System.Windows.Forms.ComboBox genComboBox;
         private System.Windows.Forms.Label genderTxt;
+        private System.Windows.Forms.TextBox newPassTxtBox;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox oldPassTxtBox;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label changePasswordTxt;
+        private System.Windows.Forms.Button saveChangePassBtn;
     }
 }
 
